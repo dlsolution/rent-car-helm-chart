@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: duylinh158/nestjs-rent-cars
   pullPolicy: IfNotPresent
-  tag: v1.12-dev
+  tag: v1.13-dev
 service:
   protocol: TCP
   type: NodePort
