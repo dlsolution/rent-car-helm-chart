@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: duylinh158/nestjs-rent-cars
+  pullPolicy: IfNotPresent
+  tag: v1.1-dev
+
+service:
+  protocol: TCP
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+
+env:
+  secret:
+    DB_HOST: "localhost"
+    DB_PORT: "3306"
+    DB_USER: "user"
+    DB_PASSWORD: "password"
+    DB_NAME: "rent_cars"
+    AUTH_SECRET: "secret123"

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rent-cars
+  name: rent-cars
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: rent-cars
+  template:
+    metadata:
+      labels:
+        app: rent-cars
+    spec:
+      containers:
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+          name: rent-cars
+          ports:
+            - containerPort: {{ .Values.service.port }}
+          env:
+            - name: DB_HOST
+              value: "{{ .Values.env.secret.DB_HOST }}"
+            - name: DB_PORT
+              value: "{{ .Values.env.secret.DB_PORT }}"
+            - name: DB_USER
+              value: "{{ .Values.env.secret.DB_USER }}"
+            - name: DB_PASSWORD
+              value: "{{ .Values.env.secret.DB_PASSWORD }}"
+            - name: DB_NAME
+              value: "{{ .Values.env.secret.DB_NAME }}"
+            - name: AUTH_SECRET
+              value: "{{ .Values.env.secret.AUTH_SECRET }}"
