@@ -6,7 +6,7 @@ image:
 service:
   protocol: TCP
   type: NodePort
-  port: 3000
+  port: 3001
   targetPort: 3000
 env:
   secret:
